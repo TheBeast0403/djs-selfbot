@@ -10,7 +10,8 @@ const Constants = require('../../util/Constants');
 
 class MessageReactionRemove extends Action {
   handle(data) {
-    const user = this.client.users.get(data.user_id);
+	  try {
+		      const user = this.client.users.get(data.user_id);
     if (!user) return false;
     // Verify channel
     const channel = this.client.channels.get(data.channel_id);
@@ -24,6 +25,7 @@ class MessageReactionRemove extends Action {
     if (reaction) this.client.emit(Constants.Events.MESSAGE_REACTION_REMOVE, reaction, user);
 
     return { message, reaction, user };
+	  } catch {}
   }
 }
 
