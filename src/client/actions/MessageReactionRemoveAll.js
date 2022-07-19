@@ -3,7 +3,8 @@ const Constants = require('../../util/Constants');
 
 class MessageReactionRemoveAll extends Action {
   handle(data) {
-    const channel = this.client.channels.get(data.channel_id);
+	  try {
+		      const channel = this.client.channels.get(data.channel_id);
     if (!channel || channel.type === 'voice') return false;
 
     const message = channel.messages.get(data.message_id);
@@ -13,6 +14,7 @@ class MessageReactionRemoveAll extends Action {
     this.client.emit(Constants.Events.MESSAGE_REACTION_REMOVE_ALL, message);
 
     return { message };
+	  } catch {}
   }
 }
 
