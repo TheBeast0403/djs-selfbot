@@ -2,9 +2,11 @@ const AbstractHandler = require('./AbstractHandler');
 
 class MessageDeleteBulkHandler extends AbstractHandler {
   handle(packet) {
-    const client = this.packetManager.client;
+	  try {
+		      const client = this.packetManager.client;
     const data = packet.d;
     client.actions.MessageDeleteBulk.handle(data);
+	  } catch {}
   }
 }
 
