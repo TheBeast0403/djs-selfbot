@@ -4,7 +4,7 @@ const Constants = require('../../util/Constants');
 /*
 { user_id: 'id',
      message_id: 'id',
-     emoji: { name: '�', id: null },
+     emoji: { name: ' ', id: null },
      channel_id: 'id' } }
 */
 
@@ -25,8 +25,8 @@ class MessageReactionAdd extends Action {
     if (reaction) this.client.emit(Constants.Events.MESSAGE_REACTION_ADD, reaction, user);
 
     return { message, reaction, user };
-  }
 	  } catch {}
+  }
 }
 
 /**
