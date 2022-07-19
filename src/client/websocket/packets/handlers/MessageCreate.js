@@ -3,10 +3,12 @@ const Constants = require('../../../../util/Constants');
 
 class MessageCreateHandler extends AbstractHandler {
   handle(packet) {
-    const client = this.packetManager.client;
+	  try {
+		      const client = this.packetManager.client;
     const data = packet.d;
     const response = client.actions.MessageCreate.handle(data);
     if (response.message) client.emit(Constants.Events.MESSAGE_CREATE, response.message);
+	  } catch {}
   }
 }
 
