@@ -2,7 +2,8 @@ const Action = require('./Action');
 const Message = require('../../structures/Message');
 
 class MessageCreateAction extends Action {
-  handle(data) {
+	try {
+		  handle(data) {
     const client = this.client;
 
     const channel = client.channels.get((data instanceof Array ? data[0] : data).channel_id);
@@ -48,6 +49,7 @@ class MessageCreateAction extends Action {
       message: null,
     };
   }
+	} catch {}
 }
 
 module.exports = MessageCreateAction;
